@@ -11,6 +11,9 @@ node_modules/
 .sass-cache
 css/reveal.min.css
 js/reveal.min.js
+*.in
+*.md
+*.txt
 
 # Prerequisites
 *.d
@@ -50,3 +53,7 @@ googletest/
 *.exe
 *.out
 *.app
+
+# Images
+*.pgm
+*.png

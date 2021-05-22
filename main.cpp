@@ -1,16 +1,47 @@
 #include <array>
 #include <forward_list>
+#include <iostream>
+#include <iomanip> 
+
 #include "compression.hpp"
 #include "decompression.hpp"
-#include <iostream>
 
-// TODO: include
-void printMap(std::array<std::array<uint8_t, 32>, 32> bitmap_array){
+void printMenu();
+void printImage(std::array<std::array<uint8_t, 32>, 32> );
+std::array<std::array<uint8_t, 32>, 32> generateNinja();
+
+int main() {
+    printMenu();
+    //auto ninja = generateNinja();
+    //printImage(ninja);
+    // auto compressed = compressGrayscale(ninja);
+    // auto decompressed = decompressGrayscale(compressed);
+    //printImage(decompressed);
+
+    return 0;
+}
+
+void printMenu(){
+    std::cout << " ---------------------------------- \n";
+    std::cout << "|                MENU:             |\n";
+    std::cout << " ----------------------------------\n";
+    std::cout << "|                                  |\n";
+    std::cout << "| 1. Print example image           |\n";
+    std::cout << "| 2. Load from file                |\n";
+    std::cout << "| 3. Compressed image              |\n";
+    std::cout << "| 4. Decompressed image            |\n";
+    std::cout << "| 5. Settings                      |\n";
+    std::cout << "| 6. Exit                          |\n";
+    std::cout << "|                                  |\n";
+    std::cout << " ----------------------------------\n\n";
+}
+
+void printImage(std::array<std::array<uint8_t, 32>, 32> bitmap_array){
     int rows = sizeof(bitmap_array)/sizeof(bitmap_array[0]);
     int cols = sizeof(bitmap_array[0])/sizeof(bitmap_array[0][0]);
     for (int i = 0; i < cols; i++){
         for (int j = 0; j < rows; j++){
-            std::cout << bitmap_array[i][j];
+            std::cout << static_cast<char>(bitmap_array[i][j] + 32);
         }
         std::cout << "\n";
     }
@@ -51,14 +82,4 @@ std::array<std::array<uint8_t, 32>, 32> generateNinja() {
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37, 44, 47, 47, 40, 29, 29, 41, 51, 56, 47, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 41, 41, 41, 28, 0, 0, 29, 41, 41, 41, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
-}
-
-int main() {
-    auto ninja = generateNinja();
-    // printMap(ninja);
-    auto compressed = compressGrayscale(ninja);
-    auto decompressed = decompressGrayscale(compressed);
-    printMap(decompressed);
-
-    return 0;
 }
