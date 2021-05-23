@@ -7,11 +7,13 @@
 #include "decompression.hpp"
 
 void printMenu();
+void menuAction();
 void printImage(std::array<std::array<uint8_t, 32>, 32> );
 std::array<std::array<uint8_t, 32>, 32> generateNinja();
 
 int main() {
     printMenu();
+    menuAction();
     //auto ninja = generateNinja();
     //printImage(ninja);
     // auto compressed = compressGrayscale(ninja);
@@ -35,6 +37,8 @@ void printMenu(){
     std::cout << "|                                  |\n";
     std::cout << " ----------------------------------\n\n";
 }
+
+
 
 void printImage(std::array<std::array<uint8_t, 32>, 32> bitmap_array){
     int rows = sizeof(bitmap_array)/sizeof(bitmap_array[0]);
@@ -82,4 +86,41 @@ std::array<std::array<uint8_t, 32>, 32> generateNinja() {
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37, 44, 47, 47, 40, 29, 29, 41, 51, 56, 47, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 41, 41, 41, 28, 0, 0, 29, 41, 41, 41, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
+}
+
+void menuAction(){
+    enum class MenuOption : uint8_t {
+        printExample,
+        load,
+        compressed,
+        decompressed,
+        settings,
+        exit
+    } menuOption_;
+    menuOption_ = MenuOption::printExample;
+    switch (menuOption_)
+    {
+        case MenuOption::printExample : {
+            
+        } break;
+        case MenuOption::load: {
+           
+        } break;
+        case MenuOption::compressed : {
+            
+        } break;
+        case MenuOption::decompressed : {
+            
+        } break;
+        case MenuOption::settings : {
+            
+        } break;
+        case MenuOption::exit : {
+            
+        } break;
+        default : {
+        
+        } break;
+    }
+
 }
